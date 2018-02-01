@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Video App</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="video_save">Save</string>
+    <string name="video_shoot">Shoot</string>
+    <string name="video_feed">Feed</string>
+    <string name="title_activity_feed_activty">FeedActivty</string>
+</resources>

@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cc_feed"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <VideoView
+    <com.malmstein.fenster.view.FensterVideoView
         android:id="@+id/vv_feed"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.malmstein.fenster.controller.SimpleMediaFensterPlayerController
+        android:id="@+id/play_video_controller"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true"
+        android:visibility="visible"
+        android:layout_above="@+id/vv_feed" />
+
 </android.support.constraint.ConstraintLayout>

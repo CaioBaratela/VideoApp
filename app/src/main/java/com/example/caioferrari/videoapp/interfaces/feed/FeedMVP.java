@@ -17,7 +17,6 @@ public interface FeedMVP {
         void shootButtonClick(TextView btnShoot);
         List<Videos> getVideosList();
         void configureRecycleView(RecyclerView rvFeedMovies);
-        void swipeOnTouchListener(RecyclerView rvFeedMovies);
     }
 
     interface FeedProvider {

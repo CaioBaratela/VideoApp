@@ -4,6 +4,7 @@ apply plugin: 'org.greenrobot.greendao'
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
+        jcenter()
     }
 }
 
@@ -44,4 +45,7 @@ dependencies {
     implementation 'be.appfoundry.progressbuttonlibrary:progressbutton:0.9.3'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'com.yqritc:android-scalablevideoview:1.0.4'
+    implementation 'com.malmstein:fenster:0.0.2'
+    implementation 'com.sprylab.android.texturevideoview:texturevideoview:1.2.1'
 }

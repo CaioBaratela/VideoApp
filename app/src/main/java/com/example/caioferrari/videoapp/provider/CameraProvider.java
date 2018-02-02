@@ -171,14 +171,9 @@ public class CameraProvider implements CameraMVP.CameraProvider {
             this.mMediaRecorder = new MediaRecorder();
             manager.openCamera(cameraId, cameraView.getStateCallback(), null);
         } catch (CameraAccessException e) {
-            //TODO TOST NA VIEW
-//            Toast.makeText(activity, "Cannot access the camera.", Toast.LENGTH_SHORT).show();
             activity.finish();
-        } catch (NullPointerException e) {
-            // Currently an NPE is thrown when the Camera2API is used but not supported on the
-            // device this code runs.
-//            ErrorDialog.newInstance("TESTE")
-//                    .show(cameraView.getCameraActivity().getChildFragmentManager(), CameraConstants.FRAGMENT_DIALOG);
+        } catch (NullPointerException ignored) {
+
         } catch (InterruptedException e) {
             throw new RuntimeException("Interrupted while trying to lock camera opening.");
         }

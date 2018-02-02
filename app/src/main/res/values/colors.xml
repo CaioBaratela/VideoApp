@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="feed_selected">#a4e0ac62</color>
+    <color name="button_unselected">#7f747474</color>
+    <color name="shoot_selected">#7fa26acc</color>
+    <color name="recorder_fill_color">#BBBCB6</color>
+    <color name="recorder_stroke">#FFFFFD</color>
 </resources>

@@ -231,13 +231,13 @@ public class CameraFragment extends Fragment implements FragmentCompat.OnRequest
             if (grantResults.length == CameraConstants.VIDEO_PERMISSIONS.length) {
                 for (int result : grantResults) {
                     if (result != PackageManager.PERMISSION_GRANTED) {
-                        ErrorDialog.newInstance("teste")
+                        ErrorDialog.newInstance("Permission Denied")
                                 .show(getChildFragmentManager(), CameraConstants.FRAGMENT_DIALOG);
                         break;
                     }
                 }
             } else {
-                ErrorDialog.newInstance("teste")
+                ErrorDialog.newInstance("Permission Denied")
                         .show(getChildFragmentManager(), CameraConstants.FRAGMENT_DIALOG);
             }
         } else {
@@ -371,7 +371,7 @@ public class CameraFragment extends Fragment implements FragmentCompat.OnRequest
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Fragment parent = getParentFragment();
             return new AlertDialog.Builder(getActivity())
-                    .setMessage("teste")
+                    .setMessage("Permission")
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

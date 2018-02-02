@@ -23,12 +23,12 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginBottom="80dp"
-        app:fillColor="#BBBCB6"
+        app:fillColor="@color/recorder_fill_color"
         app:layout_constraintBottom_toBottomOf="@+id/camera_texture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:progressColor="@android:color/black"
-        app:strokeColor="#FFFFFD"
+        app:strokeColor="@color/recorder_stroke"
         progressbutton:strokeWidth="7dp" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="50dp"
-        android:background="#7fa26acc"
+        android:background="@color/shoot_selected"
         android:text="@string/video_shoot"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginStart="50dp"
-        android:background="#7f747474"
+        android:background="@color/button_unselected"
         android:text="@string/video_feed"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -64,7 +64,7 @@
         android:layout_width="90dp"
         android:layout_height="5dp"
         android:layout_marginEnd="48dp"
-        android:background="#7fa26acc"
+        android:background="@color/shoot_selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

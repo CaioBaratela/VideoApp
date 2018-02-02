@@ -10,17 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.example.caioferrari.videoapp.R;
-import com.example.caioferrari.videoapp.interfaces.PreviewMVP;
+import com.example.caioferrari.videoapp.interfaces.preview.PreviewMVP;
 import com.example.caioferrari.videoapp.provider.PreviewProvider;
 
 public class PreviewFragment extends Fragment implements PreviewMVP.PreviewView {
 
+    private static final String TAG = "PreviewFragment";
+
     private final static String VIDEO_PATH_FILE = "video_path_file";
     private String mVideoPath;
     private Context mContext;
+
+    private boolean mIsButtonSaveClicked = false;
 
     private PreviewMVP.PreviewProvider mPreviewProvider;
 
@@ -66,6 +71,8 @@ public class PreviewFragment extends Fragment implements PreviewMVP.PreviewView 
         super.onViewCreated(view, savedInstanceState);
 
         final VideoView vvVideoPreview = view.findViewById(R.id.vv_preview);
+        final TextView btnSave = view.findViewById(R.id.btn_save);
+
         final MediaController mediaController = new MediaController(mContext);
 
         mediaController.setVisibility(View.GONE);
@@ -74,6 +81,8 @@ public class PreviewFragment extends Fragment implements PreviewMVP.PreviewView 
         vvVideoPreview.setMediaController(mediaController);
         vvVideoPreview.requestFocus();
         vvVideoPreview.start();
+
+       saveButtonOnClick(mVideoPath,btnSave);
 
         vvVideoPreview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -85,7 +94,9 @@ public class PreviewFragment extends Fragment implements PreviewMVP.PreviewView 
 
     @Override
     public void onPause() {
-        this.deleteInternalVideoFile(mVideoPath);
+        if(!mIsButtonSaveClicked) {
+            this.deleteInternalVideoFile(mVideoPath);
+        }
         super.onPause();
     }
 
@@ -117,6 +128,27 @@ public class PreviewFragment extends Fragment implements PreviewMVP.PreviewView 
     @Override
     public void deleteInternalVideoFile(String videoPath) {
         this.mPreviewProvider.deleteInternalVideoFile(videoPath);
+    }
+
+    @Override
+    public void saveButtonOnClick(final String videoPath, TextView btnSave) {
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPreviewProvider.saveVideo(videoPath);
+                mIsButtonSaveClicked = true;
+            }
+        });
+    }
+
+    @Override
+    public void backToCameraFragment() {
+        getActivity()
+                .getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, CameraFragment.newInstance(), TAG)
+                .addToBackStack(TAG)
+                .commit();
     }
 
     public interface OnFragmentInteractionListener {

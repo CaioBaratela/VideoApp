@@ -38,7 +38,7 @@ public class CameraActivity extends AppCompatActivity implements CameraFragment.
             case MotionEvent.ACTION_UP:
                 this.x2 = touchEvent.getX();
                 this.y2 = touchEvent.getY();
-                if(x1 < x2){
+                if(x1 > x2){
                     final Intent feedIntent = new Intent(CameraActivity.this,FeedActivity.class);
                     startActivity(feedIntent);
                 }

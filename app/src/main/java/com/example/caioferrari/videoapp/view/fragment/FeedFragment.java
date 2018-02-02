@@ -9,12 +9,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.caioferrari.videoapp.R;
 import com.example.caioferrari.videoapp.activity.CameraActivity;
+import com.example.caioferrari.videoapp.activity.FeedActivity;
 import com.example.caioferrari.videoapp.dao.Videos;
 import com.example.caioferrari.videoapp.interfaces.feed.FeedMVP;
 import com.example.caioferrari.videoapp.provider.FeedProvider;
@@ -26,6 +28,11 @@ public class FeedFragment extends Fragment implements FeedMVP.FeedView {
 
     private OnFragmentInteractionListener mListener;
     private Context mContext;
+
+    private float x1;
+    private float x2;
+    private float y1;
+    private float y2;
 
     private FeedMVP.FeedProvider mFeedProvider;
 
@@ -63,6 +70,7 @@ public class FeedFragment extends Fragment implements FeedMVP.FeedView {
         final TextView btnShoot = view.findViewById(R.id.btn_shoot);
         final RecyclerView rvFeedMovies = view.findViewById(R.id.rv_feed_movies);
 
+        swipeOnTouchListener(rvFeedMovies);
         configureRecycleView(rvFeedMovies);
         shootButtonClick(btnShoot);
     }
@@ -115,6 +123,30 @@ public class FeedFragment extends Fragment implements FeedMVP.FeedView {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
         rvFeedMovies.setLayoutManager(layoutManager);
         rvFeedMovies.setAdapter(feedAdapter);
+    }
+
+    @Override
+    public void swipeOnTouchListener(RecyclerView rvFeedMovies) {
+        rvFeedMovies.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = motionEvent.getX();
+                        y1 = motionEvent.getY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        x2 = motionEvent.getX();
+                        y2 = motionEvent.getY();
+                        if(x1 < x2){
+                            final Intent cameraIntent = new Intent(getActivity(), CameraActivity.class);
+                            startActivity(cameraIntent);
+                        }
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     /**

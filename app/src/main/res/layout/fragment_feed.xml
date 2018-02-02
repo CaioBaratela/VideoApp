@@ -3,9 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.caioferrari.videoapp.view.fragment.FeedFragment">
+    android:background="@android:color/white"
+    tools:mContext="com.example.caioferrari.videoapp.view.fragment.FeedFragment">
 
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_feed_movies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/btn_shoot"
@@ -43,13 +52,5 @@
         android:background="#a4e0ac62"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
